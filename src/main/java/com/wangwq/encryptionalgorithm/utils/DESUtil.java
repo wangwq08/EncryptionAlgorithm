@@ -29,7 +29,7 @@ public class DESUtil {
         cipher.init(Cipher.ENCRYPT_MODE, secretKey, iv);
         byte[] encryptbyte = cipher.doFinal(content.getBytes());
 
-        return new String(encryptbyte);
+        return bytesToString(encryptbyte);
     }
 
     /**
@@ -49,5 +49,9 @@ public class DESUtil {
         byte[] retByte = cipher.doFinal(bytesrc);
 
         return new String(retByte);
+    }
+
+    private static String bytesToString(byte[] content) {
+        return java.util.Base64.getEncoder().encodeToString(content);
     }
 }
